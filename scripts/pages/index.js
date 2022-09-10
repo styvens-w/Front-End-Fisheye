@@ -1,7 +1,7 @@
     async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
 
-        let getJson = fetch();
+        let getJson = fetch("./data/photographers.json");
         getJson = getJson.then(response => {
             return  response.json();
         })
