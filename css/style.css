@@ -53,6 +53,10 @@ h1 {
     border-radius: 50%;
 }
 
+.photographer_section article img:hover {
+    cursor: pointer;
+}
+
 .photographer_section article .location {
     margin-top: 5px;
     margin-bottom: 0;
