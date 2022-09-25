@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/photographer.css" rel="stylesheet" type="text/css">
   </head>
+
   <body>
     <header role="banner">
         <a role="link" href="index.html">
@@ -17,6 +19,21 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
+        <div class="photograph-media">
+            <div class="mediaSorting">
+                <label for="mediaSorting">Trier par
+                    <select name="mediaSorting" id="mediaSorting">
+                        <option value="popularity" selected>Popularité</option>
+                        <option value="title">Titre</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="list-media">
+
+            </div>
+        </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -33,7 +50,11 @@
 				</form>
 			</div>
 		</div>
+    <script src="https://kit.fontawesome.com/643c9e7905.js" crossorigin="anonymous"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>
+
 </html>

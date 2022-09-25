@@ -1,18 +1,16 @@
 function photographerFactory(data) {
+    const pageActuel = location.href.split("/").pop().split("?")[0];
+
     const { name, id, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
-    function getUserCardDOM() {
-        /* Accueil */
-        const article = document.createElement( 'article' );
+    const article = document.createElement( 'article' );
 
-        const link = document.createElement('a');
-        link.setAttribute("href", "photographer.html?id=" + id);
+    function getUserCardDOM() {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
-        img.setAttribute("alt", "Allez vers le profil de "+ portrait.replace(".jpg", "").replace(/([a-z])([A-Z])/g, '$1 $2'));
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
@@ -29,15 +27,36 @@ function photographerFactory(data) {
         p3.textContent = price + '€/jour';
         p3.classList.add('price')
 
-        link.appendChild(img);
-        article.appendChild(link);
-        article.appendChild(h2);
-        article.appendChild(p);
-        article.appendChild(p2);
-        article.appendChild(p3);
 
-        return (article);
+        if (pageActuel === "index.html") {
+
+            /* Accueil */
+            const link = document.createElement('a');
+            link.setAttribute("href", "photographer.html?id=" + id);
+
+            img.setAttribute("alt", "Allez vers le profil de "+ portrait.replace(".jpg", "").replace(/([a-z])([A-Z])/g, '$1 $2'));
+
+            link.appendChild(img);
+            article.appendChild(link);
+            article.appendChild(h2);
+            article.appendChild(p);
+            article.appendChild(p2);
+            article.appendChild(p3);
+
+            return (article);
+
+        } else if (pageActuel === "photographer.html") {
+
+            article.appendChild(h2);
+            article.appendChild(p);
+            article.appendChild(p2);
+
+            return {img, article};
+
+        }
+
     }
+
 
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
