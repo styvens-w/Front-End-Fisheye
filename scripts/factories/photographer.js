@@ -34,11 +34,11 @@ function photographerFactory(data) {
             const link = document.createElement('a');
             link.setAttribute("href", "photographer.html?id=" + id);
 
-            img.setAttribute("alt", "Allez vers le profil de "+ portrait.replace(".jpg", "").replace(/([a-z])([A-Z])/g, '$1 $2'));
+            link.setAttribute("aria-label", "Allez vers le profil de " + name);
 
             link.appendChild(img);
+            link.appendChild(h2)
             article.appendChild(link);
-            article.appendChild(h2);
             article.appendChild(p);
             article.appendChild(p2);
             article.appendChild(p3);
@@ -46,6 +46,8 @@ function photographerFactory(data) {
             return (article);
 
         } else if (pageActuel === "photographer.html") {
+
+            img.setAttribute("alt", "Photo de profil de " + name);
 
             article.appendChild(h2);
             article.appendChild(p);

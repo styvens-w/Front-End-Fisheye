@@ -1,5 +1,6 @@
 main {
     padding: 0 100px;
+    position: relative;
 }
 
 #contact_modal {
@@ -50,6 +51,7 @@ article .tagline {
     width: 200px;
     border-radius: 50%;
     justify-self: end;
+    object-fit: cover;
 }
 
 .mediaSorting label {
@@ -130,19 +132,43 @@ article .tagline {
 
 }
 
-.list-media .logoLike {
+.list-media article .logoLike {
     font-size: 18px;
     margin-left: 8px;
     color: rgba(145, 28, 28, 0.50);
     cursor: pointer;
 }
 
-.list-media .logoLike:hover {
-
-    color: rgba(145, 28, 28, 0.75);
+.list-media .liked {
+    color: rgba(145, 28, 28, 1);
 }
 
+
+.main .like-prix {
+    position: fixed;
+    background: #DB8876;
+    bottom: 0;
+    right: 0;
+    padding: 10px 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.like-prix .total-like {
+    margin-right: 40px;
+}
+
+.like-prix .total-like i {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+
+
 .modal {
+    position: absolute;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;

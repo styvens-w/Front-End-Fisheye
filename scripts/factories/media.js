@@ -1,9 +1,10 @@
 function mediaFactory(data, photographer) {
 
-    const {id, photographerId, title, image, video, likes, date, price} = data;
+    let {id, photographerId, title, image, video, likes, date, price} = data;
     const photographerName = photographer;
     const name = photographerName.substring(0, photographerName.indexOf(' '));
     let media;
+
 
     function getUserMediaDOM() {
 
@@ -13,47 +14,86 @@ function mediaFactory(data, photographer) {
         const titl = document.createElement('p');
         const like = document.createElement('span');
         const logoLike = document.createElement('i');
+        let liked = false;
 
-        titl.classList.add('title');
-        titl.textContent = title;
 
-        like.textContent = likes;
-        like.classList.add('like');
-        logoLike.className = 'logoLike fa-solid fa-heart';
+        function addMedia(type, element) {
+            media = `assets/photographers/${name}/${type}`;
 
-        like.appendChild(logoLike);
-        titl.appendChild(like);
+            if (image) {type = 'photo'} else if (video) {type = 'vidéo'}
+
+            logoLike.setAttribute('aria-label', 'Aimer la ' + type);
+
+            element.setAttribute("src", media);
+            element.setAttribute('alt', title + ', agrandir la ' + type);
+            element.classList.add('media');
+
+            article.appendChild(element);
+        }
+
+
+        function addLike() {
+            let type;
+            if (image) {type = 'photo'} else if (video) {type = 'vidéo'}
+
+            liked = !liked;
+
+            if (!liked) {
+                liked = true;
+                likes++;
+                logoLike.classList.add('liked');
+                logoLike.ariaLabel = 'Ne plus aimer la ' + type;
+                like.textContent = likes;
+                like.appendChild(logoLike);
+            } else {
+                liked = false;
+                likes--;
+                logoLike.classList.remove('liked')
+                logoLike.ariaLabel = 'Aimer la ' + type;
+                like.textContent = likes;
+                like.appendChild(logoLike);
+            }
+        }
+
 
         if (image) {
 
-            media = `assets/photographers/${name}/${image}`;
-            img.setAttribute("src", media);
-            img.classList.add('media');
-            article.appendChild(img);
+            addMedia(image, img);
 
         } else if (video) {
 
             const extension = video.split('.').pop();
             const div = document.createElement('div');
 
-            media = `assets/photographers/${name}/${video}`;
-
-            div.classList.add('play-button');
-            article.style.position = "relative"
-
-            vid.setAttribute("src", media);
             vid.setAttribute("type", `video/${extension}`);
             vid.setAttribute("preload", "metadata");
-            vid.classList.add('media');
-            article.appendChild(vid);
+
+            addMedia(video, vid);
+
+            article.style.position = "relative"
+            div.classList.add('play-button');
             article.appendChild(div);
 
         }
 
+        titl.classList.add('title');
+        titl.textContent = title;
+
+        logoLike.className = 'logoLike fa-solid fa-heart';
+        logoLike.setAttribute('role', 'button')
+        like.classList.add('like');
+        like.textContent = likes;
+        like.appendChild(logoLike);
+        titl.appendChild(like);
         article.appendChild(titl);
+
+        logoLike.addEventListener('click', addLike);
 
         return (article);
     }
 
+
+
     return {id, photographerId, title, image, video, likes, date, price, getUserMediaDOM}
 }
+
