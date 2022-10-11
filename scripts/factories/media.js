@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function mediaFactory(data, photographer) {
 
     let {id, photographerId, title, image, video, likes, date, price} = data;
@@ -12,7 +13,7 @@ function mediaFactory(data, photographer) {
         const img = document.createElement('img');
         const vid = document.createElement('video');
         const titl = document.createElement('p');
-        const like = document.createElement('span');
+        const like = document.createElement('p');
         const logoLike = document.createElement('i');
         let liked = false;
 
@@ -26,6 +27,7 @@ function mediaFactory(data, photographer) {
 
             element.setAttribute("src", media);
             element.setAttribute('alt', title + ', agrandir la ' + type);
+            element.setAttribute('onclick', 'openLightbox(this)');
             element.classList.add('media');
 
             article.appendChild(element);
@@ -36,7 +38,6 @@ function mediaFactory(data, photographer) {
             let type;
             if (image) {type = 'photo'} else if (video) {type = 'vidéo'}
 
-            liked = !liked;
 
             if (!liked) {
                 liked = true;
@@ -83,9 +84,10 @@ function mediaFactory(data, photographer) {
         logoLike.setAttribute('role', 'button')
         like.classList.add('like');
         like.textContent = likes;
+        like.setAttribute('aria-label', 'Nombres de like')
         like.appendChild(logoLike);
-        titl.appendChild(like);
         article.appendChild(titl);
+        article.appendChild(like)
 
         logoLike.addEventListener('click', addLike);
 

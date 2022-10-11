@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const pageActuel = location.href.split("/").pop().split("?")[0];
 
@@ -10,22 +11,23 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", "Photo de profile de " + name);
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
 
         const p = document.createElement('p');
         p.textContent = city + ', ' + country;
-        p.classList.add('location')
+        p.classList.add('location');
 
         const p2 = document.createElement('p');
         p2.textContent = tagline;
-        p2.classList.add('tagline')
+        p2.classList.add('tagline');
 
         const p3 = document.createElement('p');
         p3.textContent = price + '€/jour';
-        p3.classList.add('price')
+        p3.classList.add('price');
 
 
         if (pageActuel === "index.html") {
@@ -37,7 +39,7 @@ function photographerFactory(data) {
             link.setAttribute("aria-label", "Allez vers le profil de " + name);
 
             link.appendChild(img);
-            link.appendChild(h2)
+            link.appendChild(h2);
             article.appendChild(link);
             article.appendChild(p);
             article.appendChild(p2);
@@ -48,6 +50,9 @@ function photographerFactory(data) {
         } else if (pageActuel === "photographer.html") {
 
             img.setAttribute("alt", "Photo de profil de " + name);
+
+            const nameModal = document.querySelector('.modal .name');
+            nameModal.innerHTML += '<br>' + name;
 
             article.appendChild(h2);
             article.appendChild(p);
