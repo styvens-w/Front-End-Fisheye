@@ -7,11 +7,10 @@ const closeBtn = document.querySelector('.lightbox_right .close');
 function addMediaLightbox(elementClicked) {
 
     let newMedia = elementClicked.cloneNode(true);
-    let newTitle = elementClicked.nextSibling.cloneNode(true);
+    let newTitle = elementClicked.parentNode.nextSibling.cloneNode(true);
 
     if (newMedia.tagName === 'VIDEO') {
         newMedia.setAttribute('controls', 'true');
-        newTitle = elementClicked.nextSibling.nextSibling.cloneNode(true);
     }
 
     newMedia.alt = newTitle.textContent;
@@ -65,11 +64,10 @@ function nextMedia() {
             if (allMedia[i + 1]) {
 
                 nextMedia = allMedia[i + 1].cloneNode(true);
-                nextTitle = allMedia[i + 1].nextSibling.cloneNode(true);
+                nextTitle = allMedia[i + 1].parentNode.nextSibling.cloneNode(true);
 
                 if (nextMedia.tagName === 'VIDEO') {
                     nextMedia.setAttribute('controls', 'true');
-                    nextTitle = allMedia[i + 1].nextSibling.nextSibling.cloneNode(true);
                 }
 
                 allMedia[i + 1].setAttribute('lightbox', 'true');
@@ -77,11 +75,10 @@ function nextMedia() {
             } else {
 
                 nextMedia = allMedia[0].cloneNode(true);
-                nextTitle = allMedia[0].nextSibling.cloneNode(true);
+                nextTitle = allMedia[0].parentNode.nextSibling.cloneNode(true);
 
                 if (nextMedia.tagName === 'VIDEO') {
                     nextMedia.setAttribute('controls', 'true');
-                    nextTitle = allMedia[0].nextSibling.nextSibling.cloneNode(true);
                 }
 
                 allMedia[0].setAttribute('lightbox', 'true');
@@ -117,11 +114,10 @@ function previousMedia() {
             if (allMedia[i - 1]) {
 
                 previousMedia = allMedia[i - 1].cloneNode(true);
-                previousTitle = allMedia[i - 1].nextSibling.cloneNode(true);
+                previousTitle = allMedia[i - 1].parentNode.nextSibling.cloneNode(true);
 
                 if (previousMedia.tagName === 'VIDEO') {
                     previousMedia.setAttribute('controls', 'true');
-                    previousTitle = allMedia[i - 1].nextSibling.nextSibling.cloneNode(true);
                 }
 
                 allMedia[i - 1].setAttribute('lightbox', 'true');
@@ -129,11 +125,10 @@ function previousMedia() {
             } else {
 
                 previousMedia = allMedia[allMedia.length - 1].cloneNode(true);
-                previousTitle = allMedia[allMedia.length - 1].nextSibling.cloneNode(true);
+                previousTitle = allMedia[allMedia.length - 1].parentNode.nextSibling.cloneNode(true);
 
                 if (previousMedia.tagName === 'VIDEO') {
                     previousMedia.setAttribute('controls', 'true');
-                    previousTitle = allMedia[allMedia.length - 1].nextSibling.nextSibling.cloneNode(true);
                 }
 
                 allMedia[allMedia.length - 1].setAttribute('lightbox', 'true');

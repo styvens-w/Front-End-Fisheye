@@ -92,8 +92,6 @@ function checkError(element, nbCharacters, message, regex) {
 // eslint-disable-next-line no-unused-vars
 function validate() {
 
-    console.clear();
-
     if (checkError(firstName, 2, 'Le champ prénom doit contenir au minimum 2 caractères', name_regex)
     &&
     checkError(lastName, 2, 'Le champ nom doit contenir au minimum 2 caractères', name_regex)

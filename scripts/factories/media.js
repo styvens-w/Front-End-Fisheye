@@ -19,6 +19,8 @@ function mediaFactory(data, photographer) {
 
 
         function addMedia(type, element) {
+            const link = document.createElement('a');
+
             media = `assets/photographers/${name}/${type}`;
 
             if (image) {type = 'photo'} else if (video) {type = 'vidéo'}
@@ -26,11 +28,15 @@ function mediaFactory(data, photographer) {
             logoLike.setAttribute('aria-label', 'Aimer la ' + type);
 
             element.setAttribute("src", media);
-            element.setAttribute('alt', title + ', agrandir la ' + type);
+            element.setAttribute('alt', title);
             element.setAttribute('onclick', 'openLightbox(this)');
             element.classList.add('media');
+            link.setAttribute('aria-label', 'Agrandir la ' + type);
+            link.setAttribute('href', '#');
+            link.setAttribute('onclick', 'openLightbox(this.firstElementChild)');
+            link.appendChild(element);
 
-            article.appendChild(element);
+            article.appendChild(link);
         }
 
 
@@ -69,11 +75,12 @@ function mediaFactory(data, photographer) {
             vid.setAttribute("type", `video/${extension}`);
             vid.setAttribute("preload", "metadata");
 
-            addMedia(video, vid);
+
 
             article.style.position = "relative"
             div.classList.add('play-button');
             article.appendChild(div);
+            addMedia(video, vid);
 
         }
 
@@ -81,13 +88,13 @@ function mediaFactory(data, photographer) {
         titl.textContent = title;
 
         logoLike.className = 'logoLike fa-solid fa-heart';
-        logoLike.setAttribute('role', 'button')
+        logoLike.setAttribute('role', 'button');
         like.classList.add('like');
         like.textContent = likes;
-        like.setAttribute('aria-label', 'Nombres de like')
+        like.setAttribute('aria-label', 'Nombres de like');
         like.appendChild(logoLike);
         article.appendChild(titl);
-        article.appendChild(like)
+        article.appendChild(like);
 
         logoLike.addEventListener('click', addLike);
 

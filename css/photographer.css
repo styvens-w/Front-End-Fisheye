@@ -1,3 +1,7 @@
+*:focus {
+    border: 2px solid blue !important;
+}
+
 main {
     display: block;
     padding: 0 100px;
@@ -91,6 +95,15 @@ article .tagline {
     object-fit: cover;
     cursor: pointer;
     border-radius: 3px;
+}
+
+.list-media a:focus {
+    outline: none !important;
+    border: none !important;
+}
+
+.list-media a:focus .media {
+    border: 2px solid blue;
 }
 
 .list-media .play-button {
@@ -300,6 +313,16 @@ form #submit {
     display: flex;
     align-items: center;
     margin: auto;
+}
+
+.lightbox a {
+    height: 40px !important;
+    text-decoration: none;
+}
+
+.lightbox a:focus {
+    outline: none !important;
+    border: none !important;
 }
 
 [class^="lightbox_"] i {

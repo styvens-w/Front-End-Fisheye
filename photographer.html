@@ -70,17 +70,25 @@
         </div>
     </div>
 
-    <div role="dialog" id="lightbox_modal" aria-hidden="true">
-        <div aria-label="Vue rapprochée du média" class="lightbox">
+    <div id="lightbox_modal" aria-hidden="true">
+        <div role="dialog" aria-label="Vue rapprochée du média" class="lightbox">
             <div class="lightbox_left">
-                <i id="previousMedia" onclick="previousMedia()" role="link" aria-label="Média précédent" class="fa-solid fa-chevron-left"></i>
+                <a href="#" id="previousMedia" onclick="previousMedia()" role="link" aria-label="Média précédent" >
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+
             </div>
             <div class="lightbox_center">
 
             </div>
             <div class="lightbox_right">
-                <i aria-label="Fermer la boîte de dialogue" role="button" class="fa-regular fa-x close"></i>
-                <i id="nextMedia" onclick="nextMedia()" role="link" aria-label="Média suivant" class="fa-solid fa-chevron-right"></i>
+                <a href="#" id="nextMedia" onclick="nextMedia()" role="link" aria-label="Média suivant" >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+
+                <a href="#" aria-label="Fermer la boîte de dialogue" role="button" class="close">
+                    <i class="fa-regular fa-x"></i>
+                </a>
             </div>
         </div>
     </div>
